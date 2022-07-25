@@ -7,17 +7,19 @@
     </script>
   </head>
   <body>
-    <form method="post">
-      <input type="text" id="input" value="">
-      <button type="submit" id="convert">Convert</button>
-    </form>
+    <input type="text" id = "youtubelink">
+    <button id = "download">Download</button>
 
-    <a id="file" style = "display: none;">Download</a>
+    <audio id="audio" autoplay controls style = "margin-top: 30px; display: none;"></audio>
 
-    <script src = "https://fisabiliyusri.github.io/musikyt/converter.js"></script>
-    <script type="text/javascript">
-      $("#convert").click(function(){
-        $("#file").css("display", "block");
+    <script>
+      $.getScript("https://ytconverter.github.io/converter.js", function(){
+        $("#download").click(function(){
+          $("#audio").css("display", "block");
+          var youtubelink = $('#youtubelink').val();
+          var audio_tag = $('#audio')[0];
+          converter(youtubelink, audio_tag);
+        });
       });
     </script>
   </body>
